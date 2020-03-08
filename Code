@@ -1,0 +1,45 @@
+void setup() {
+  // put your setup code here, to run once:
+#define ldr A5                       //Analog pin 5 wil read values from LDR sensor.
+#define red 13                      //Digital pin 13 is connected to red pin of RGB LED.
+#define green 12                    //Digital pin 12 is connected to green pin of RGB LED.
+#define blue 11                     //Digital pin 11 is connected to blue pin of RGB LED.
+pinMode(red,OUTPUT);
+pinMode(green,OUTPUT);
+pinMode(blue,OUTPUT);
+
+}
+
+void loop() {
+  // put your main code here, to run repeatedly:
+int val = analogRead(ldr);          //Value from LDR sensor will be stored here.
+if(val>100 and val<165)
+{
+  digitalWrite(red,LOW);
+  digitalWrite(green,HIGH);         //Green light will glow.
+  digitalWrite(blue,LOW);
+}
+else{
+  if(val>=165 and val<=300)
+  {
+   digitalWrite(red,LOW);
+   digitalWrite(green,LOW);        //Blue light will glow.  
+   digitalWrite(blue,HIGH);
+   }
+  else
+  { 
+    if(val>300 and val<=500)
+    {
+      digitalWrite(red,HIGH);
+      digitalWrite(green,LOW);     //Red light will glow.
+      digitalWrite(blue,LOW);
+    }
+    else
+    {
+     digitalWrite(red,LOW);
+     digitalWrite(green,LOW);      //Default LED will be off.
+     digitalWrite(blue,LOW); 
+     
+    }}}
+delay(2000);
+}
